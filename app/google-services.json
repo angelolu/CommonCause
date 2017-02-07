@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "792613235866",
+    "firebase_url": "https://common-cause.firebaseio.com",
+    "project_id": "common-cause",
+    "storage_bucket": "common-cause.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792613235866:android:ef3d130693449f3f",
+        "android_client_info": {
+          "package_name": "com.exceptionlabs.cc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792613235866-s9gjpkuj56m4b4o6m0e8suc69v2ojr16.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.exceptionlabs.cc",
+            "certificate_hash": "85EC98A2FFA32EC26F9EC8D78257438A4A582AC8"
+          }
+        },
+        {
+          "client_id": "792613235866-qjufbtkm8o162tstdghktqr6eggvnipk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHr3nBc3AdMmqZ43kesDxwujgCWKi2r7Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792613235866-qjufbtkm8o162tstdghktqr6eggvnipk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
