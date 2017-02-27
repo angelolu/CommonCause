@@ -13,7 +13,7 @@ import java.util.Date;
  * Created by angel on 1/23/2017.
  */
 
-class User {
+public class User {
 
     String UID, fname, lname, email, datereg, sOrganizations;
     String[] organizations;
@@ -57,7 +57,7 @@ class User {
         });
     }
 
-    public Boolean getBasicProfileState() {
+    public Boolean isBasicProfileComplete() {
         // Checks if basic profile information has been recorded. Returns true if data is recorded, false if data is missing
         if (!loaded) return null;
         if (fname != null && lname != null && email != null && datereg != null) {

@@ -1,15 +1,17 @@
 package com.exceptionlabs.cc;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.exceptionlabs.cc.models.*;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -24,6 +26,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -55,8 +58,46 @@ public class SignInActivity extends AppCompatActivity {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 
-                    final User myUser = new User(user.getUid());
-                    myUser.setUserLoadedListener(new User.UserLoadedListener() {
+                    final com.exceptionlabs.cc.models.UserManager myUserManager = new com.exceptionlabs.cc.models.UserManager();
+                    myUserManager.loadUserFromCCUID(user.getUid(), new com.exceptionlabs.cc.models.UserManager.UserLoadedListener() {
+                        @Override
+                        public void onUserLoaded() {
+                            User myUser = myUserManager.getLoadedUser();
+                            // Check if this is a new user, if not, record basic data
+                            if(!myUser.isBasicProfileComplete()){
+                                myUser.setBasicProfile(fName, lName, user.getEmail());
+                                myUserManager.syncUser(myUser);
+                            }
+                            // Decide next step
+                            Intent nextActivity;
+                            if(myUser.getOrgs() == null || myUser.getOrgs().size() == 0){
+                                // The user is not registered with any organizations, prompt them to set one up
+                                nextActivity = new Intent(SignInActivity.this, AddOrgActivity.class);
+                            }else{
+                                // User is all set up and ready to go!
+                                nextActivity = new Intent(SignInActivity.this, DashboardActivity.class);
+                            }
+
+                            //Save current user to start syncing firebase data
+                            Context context = getApplicationContext();
+                            SharedPreferences sharedPref = context.getSharedPreferences(
+                                    getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putString(getString(R.string.preference_key_current_userID), user.getUid());
+                            editor.commit();
+
+                            // Let's continue, sign in flow is complete
+                            startActivity(nextActivity);
+                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                            if (mAuthListener != null) {
+                                mAuth.removeAuthStateListener(mAuthListener);
+                            }
+                            finish();
+                        }
+                    });
+
+                    /*final User mysetUserLoadedListenerUser = new User(user.getUid());
+                    myUser.(new User.UserLoadedListener() {
                         @Override
                         public void onDataLoaded() {
                             if (!myUser.getBasicProfileState()) {
@@ -80,7 +121,7 @@ public class SignInActivity extends AppCompatActivity {
                             //setSignInProgress(false);
                             finish();
                         }
-                    });
+                    });*/
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
