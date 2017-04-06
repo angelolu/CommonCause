@@ -1,4 +1,8 @@
 <resources>
+    <declare-styleable name="DashboardIconView">
+        <attr name="cc_label" format="string" />
+        <attr name="cc_background" format="color" />
+    </declare-styleable>
     <declare-styleable name="SquareIcon">
         <attr name="exampleString" format="string" />
         <attr name="exampleDimension" format="dimension" />

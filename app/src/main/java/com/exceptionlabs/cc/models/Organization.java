@@ -7,7 +7,7 @@ import java.util.List;
  */
 
 public class Organization {
-    private String OID, dateRed, owner, name, desc, def_role;
+    private String OID, dateReg, owner, name, desc, def_role;
     private boolean listed;
     private List<Role> roles;
     private List<Document> documents;
@@ -23,12 +23,12 @@ public class Organization {
         this.OID = OID;
     }
 
-    public String getDateRed() {
-        return dateRed;
+    public String getDateReg() {
+        return dateReg;
     }
 
-    public void setDateRed(String dateRed) {
-        this.dateRed = dateRed;
+    public void setDateReg(String dateRed) {
+        this.dateReg = dateRed;
     }
 
     public String getOwner() {

@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/rlButton"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:background="@color/colorPrimaryDark">
+            android:layout_height="90dp">
 
             <ImageView
                 android:id="@+id/ivButton"
@@ -26,7 +22,6 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="A"
                 android:textColor="@color/colorWhite"
                 android:textSize="65sp"
                 android:textStyle="normal" />
@@ -38,10 +33,8 @@
             android:padding="5dp">
 
             <TextView
-                android:id="@+id/tvOrg"
+                android:id="@+id/tvLabel"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add Organization" />
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
     </LinearLayout>
-</android.support.v7.widget.CardView>

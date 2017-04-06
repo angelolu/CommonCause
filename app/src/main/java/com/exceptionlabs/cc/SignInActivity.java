@@ -95,33 +95,6 @@ public class SignInActivity extends AppCompatActivity {
                             finish();
                         }
                     });
-
-                    /*final User mysetUserLoadedListenerUser = new User(user.getUid());
-                    myUser.(new User.UserLoadedListener() {
-                        @Override
-                        public void onDataLoaded() {
-                            if (!myUser.getBasicProfileState()) {
-                                // This is a brand new user
-                                // Recording first run user data
-                                myUser.setBasicProfile(fName, lName, user.getEmail());
-                            }
-                            Intent nextActivity;
-                            if(myUser.getOrganizations() == null || myUser.getOrganizations().length == 0){
-                                // User does not belong to any organizations, let's add one now
-                                nextActivity = new Intent(SignInActivity.this, AddOrgActivity.class);
-                            }else{
-                                // User is all set up and ready to go!
-                                nextActivity = new Intent(SignInActivity.this, DashboardActivity.class);
-                            }
-                            startActivity(nextActivity);
-                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                            if (mAuthListener != null) {
-                                mAuth.removeAuthStateListener(mAuthListener);
-                            }
-                            //setSignInProgress(false);
-                            finish();
-                        }
-                    });*/
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");

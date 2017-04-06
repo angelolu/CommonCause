@@ -7,8 +7,8 @@
     tools:context="com.exceptionlabs.cc.SignInActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
         android:scaleType="centerCrop"
         android:src="@drawable/starry_bg" />
@@ -30,15 +30,6 @@
             android:textColor="@color/colorWhite"
             android:textSize="34sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:text="Common Cause is a people management service for everyone. from small clubs with a dozen volunteers to budding enterprises with staff at multiple locations; track, manage and grow."
-            android:textColor="@color/colorWhite" />
-
         <com.google.android.gms.common.SignInButton
             android:layout_gravity="center_horizontal"
             android:id="@+id/gmsLogin"
@@ -46,6 +37,16 @@
             android:layout_height="wrap_content" >
 
         </com.google.android.gms.common.SignInButton>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:text="Common Cause is a people management service for everyone. From small clubs with a dozen volunteers to budding enterprises with staff at multiple locations; track, manage and grow."
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
 
         <ProgressBar
             style="@android:style/Widget.Material.Light.ProgressBar"
